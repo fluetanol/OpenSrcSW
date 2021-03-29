@@ -25,12 +25,13 @@ public class makeKeyword{
 		DocumentBuilder facbuild = fac.newDocumentBuilder(); //도구집 하나 구해옴
 		Document doc = facbuild.parse(xml); //특정 파일을 doc형태로 파싱하는 도구를 씀(doc형태로 읽어들이겠다는 것이다)
 		
-		Element root = doc.getDocumentElement();//맨 윗 노드 가져옴 (html하던것을 떠올려야함)
-		Element thisid= (Element) root.getFirstChild(); 
+		Element root = doc.getDocumentElement();//맨 윗 노드 가져옴 (==docs태그)
+		Element thisid= (Element) root.getFirstChild(); //그 자식태그 (==doc id 태그)
 		
 		while(thisid!=null)
 		{
-			Element thisbody = (Element) thisid.getFirstChild().getNextSibling();; //동위의 다음 노드를 챙겨옴(sibling노드)
+			Element thisbody = (Element) thisid.getFirstChild().getNextSibling(); //동위의 다음 노드를 챙겨옴(sibling노드)
+			//왜냐면 doc id의 자식은 항상 title과 body태그로 이루어졌기 때문.
 			String temp = thisbody.getTextContent();
 		
 			KeywordExtractor ke = new KeywordExtractor();

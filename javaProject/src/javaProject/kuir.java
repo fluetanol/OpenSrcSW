@@ -14,7 +14,7 @@ import org.xml.sax.SAXException;
 
 public class kuir {
 
-	public static void main(String[] args) throws ParserConfigurationException, TransformerException, IOException, SAXException {
+	public static void main(String[] args) throws ParserConfigurationException, TransformerException, IOException, SAXException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 	
 		if(args[0].equals("-c"))
@@ -30,10 +30,22 @@ public class kuir {
 		else if(args[0].equals("-k"))
 		{
 		makeKeyword maked = new makeKeyword();
-		Document doc = maked.keywordgo("C:\\Users\\mike4\\OneDrive\\Desktop\\코딩\\SimpleIR\\javaProject\\src\\collection.xml");
+		Document doc = maked.keywordgo(args[1]);
 		maked.Makingxml(doc, "src/index.xml");
 		}
 		
+		
+		else if(args[0].equals("-i"))
+		{
+			indexer index = new indexer();
+			index.makehashmapfile(args[1]);
+			index.Hashmapreading("src/index.post");	
+		}
+		
+		
 		System.out.println("finish!");
+		
+		
+		
 	}
 }
