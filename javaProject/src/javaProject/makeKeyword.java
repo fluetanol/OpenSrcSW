@@ -41,15 +41,29 @@ public class makeKeyword{
 				Keyword kwd = kl.get(i);
 				line = line + kwd.getString()+":"+kwd.getCnt()+"#";
 			}
+
 			thisbody.setTextContent(line);	
 			line = "";
 			thisid=(Element) thisid.getNextSibling();
 		}
 		return doc;
 	}
-	
-	//		body.setTextContent("ad");
 
+	
+	private String readingstring(String temp,String line)
+	{
+		KeywordExtractor ke = new KeywordExtractor();
+		KeywordList kl = ke.extractKeyword(temp, true);
+		for(int i=0; i<kl.size(); i++)
+		{
+			Keyword kwd = kl.get(i);
+			line = line + kwd.getString()+":"+kwd.getCnt()+"#";
+		}
+		return line;
+	}
+	
+	
+	
 	
 	void Makingxml(Document doc, String xmlfilename) throws TransformerException, FileNotFoundException
 	{

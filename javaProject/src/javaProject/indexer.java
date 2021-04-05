@@ -71,15 +71,15 @@ public class indexer {
 			ArrayList<Float> value = (ArrayList) hashmap.get(key);
 				for(int i=1; i<value.size(); i=i+2)
 				{
-					float weight = weight(value.get(i),value.size()/2);
+					float weight = weight(value.get(i),value.size()/2,5);
 					value.set(i, weight);
 				}
 		}	
 	}
 	
-	private float weight(float tfxy,float dfx)
+	float weight(float tfxy,float dfx,int docnum)
 	{
-		float weight  = (float) (tfxy * Math.log(5/dfx));
+		float weight  = (float) (tfxy * Math.log(docnum/dfx));
 		weight = (float)Math.round(weight*100)/100;
 
 		//tfx,y * log(N/dfx)
@@ -89,7 +89,7 @@ public class indexer {
 		return weight;
 	}
 	
-	void Hashmapreading(String hashname) throws IOException, ClassNotFoundException	
+	HashMap Hashmapreading(String hashname, boolean printorsearch) throws IOException, ClassNotFoundException	
 	{
 		FileInputStream filestream = new FileInputStream(hashname);
 		ObjectInputStream objectinput = new ObjectInputStream(filestream);
@@ -98,16 +98,19 @@ public class indexer {
 		objectinput.close();
 		System.out.println("읽어온 객체 타입 -> " +object.getClass()+"\n");
 		HashMap hashmap = (HashMap) object;
+			
+		if(printorsearch==true){
 		Iterator<String> it = hashmap.keySet().iterator();
-		
 		while(it.hasNext())
 		{
 			String key = it.next();
 			ArrayList value = (ArrayList) hashmap.get(key);
 			System.out.println(key+"->>"+value+"\n");
+
+		}}		
+		
+		return hashmap;
 		}
-	}
-	
 }
 	
 	

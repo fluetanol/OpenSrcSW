@@ -23,7 +23,6 @@ public class kuir {
 		File[] contents = maked.openFile();
 		Document doc=maked.collection(contents);
 		maked.Makingxml(doc,"src/collection.xml");
-        //html파일을 읽어들이기 위한 객체들
 		}
 
 		
@@ -39,13 +38,16 @@ public class kuir {
 		{
 			indexer index = new indexer();
 			index.makehashmapfile(args[1]);
-			index.Hashmapreading("src/index.post");	
+			index.Hashmapreading("src/index.post",true);	
+		}
+		
+		else if(args[0].equals("-s"))
+		{
+			searcher search =  new searcher();
+			search.queryreading(args[3],args[1],5);
 		}
 		
 		
-		System.out.println("finish!");
-		
-		
-		
+		System.out.println("finish!");		
 	}
 }
