@@ -9,9 +9,9 @@ public class searcher {
 		
 	}
 	
-	private float CalcSim()
+	private float[] CalcSim()
 	{
-		return 0;
+		return null;
 	}
 	
 }
