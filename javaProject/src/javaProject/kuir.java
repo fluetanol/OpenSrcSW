@@ -44,7 +44,8 @@ public class kuir {
 		else if(args[0].equals("-s"))
 		{
 			searcher search =  new searcher();
-			search.queryreading(args[3],args[1],5);
+			float[][] Calc = search.queryreading(args[3],args[1],5);	
+			search.CompareSimtoXml("src/index.xml", Calc,3);
 		}
 		
 		
