@@ -27,15 +27,22 @@ public class genSnippet {
 			if(bufstr[i].equals(keyword[i]))
 				count[i]++;
 			
-			int max;
-			int maxindex;
+			int max=count[0];
+			int maxindex =0;
 			
 			for(int i=0; i<keyword.length; i++)
+			{
 				for(int j=0; j<keyword.length; j++)
 				{
-					
-					
+					if(count[i]>max)
+					{
+						maxindex = i;
+					}	
 				}
+				System.out.println(keyword[maxindex]);
+				
+			}
+			
 		}
 		
 			

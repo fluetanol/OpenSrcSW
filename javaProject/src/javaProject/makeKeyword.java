@@ -34,12 +34,12 @@ public class makeKeyword{
 			//왜냐면 doc id의 자식은 항상 title과 body태그로 이루어졌기 때문.
 			String temp = thisbody.getTextContent();
 		
-			KeywordExtractor ke = new KeywordExtractor();
-			KeywordList kl = ke.extractKeyword(temp, true);
+			KeywordExtractor ke = new KeywordExtractor();		//형태소 분석기 생성
+			KeywordList kl = ke.extractKeyword(temp, true);		//형태소 걸러내기
 			for(int i=0; i<kl.size(); i++)
 			{
-				Keyword kwd = kl.get(i);
-				line = line + kwd.getString()+":"+kwd.getCnt()+"#";
+				Keyword kwd = kl.get(i);						//형태소 걸러낸 것에 대한 정보가 담긴 리스트 탐색
+				line = line + kwd.getString()+":"+kwd.getCnt()+"#"; //getString 은 형태소, Cnt는 얼마나 카운트 되었는지
 			}
 
 			thisbody.setTextContent(line);	

@@ -22,7 +22,7 @@ public class kuir {
 		makeCollection maked = new makeCollection(args[1]);
 		File[] contents = maked.openFile();
 		Document doc=maked.collection(contents);
-		maked.Makingxml(doc,"src/collection.xml");
+		maked.Makingxml(doc,"src/collection.xml");	// 가져온 doc파일을 xml파일로 전환시킨다
 		}
 
 		
